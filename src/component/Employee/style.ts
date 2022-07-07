@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EmployeeContainer = styled.div`
+export const EmployeeContainer = styled.div<{ index: number }>`
   cursor: pointer;
   padding: 0 1rem;
   padding-bottom: 1rem;
@@ -18,6 +18,21 @@ export const EmployeeContainer = styled.div`
     box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
       0 18px 36px -18px rgba(0, 0, 0, 0.3),
       0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  }
+
+  opacity: 0;
+  animation: slideCard 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: ${(props) => (props.index < 10 ? props.index * 0.05 : 0.5)}s;
+
+  @keyframes slideCard {
+    0% {
+      transform: translateX(-200px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
   }
 `;
 

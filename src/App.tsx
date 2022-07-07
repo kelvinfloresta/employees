@@ -31,10 +31,11 @@ function App() {
       employee_name,
       employee_salary,
       profile_image,
-    }) => {
+    }, i) => {
       return <Employee
         key={id}
         id={id}
+        index={i}
         employee_age={employee_age}
         employee_name={employee_name}
         employee_salary={employee_salary}
