@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Employee } from './component/Employee';
+import { Employee } from './component/Employee/Employee';
+import { List } from './component/List';
 import { useListEmployee } from './hook/useListEmployee';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
   }
 
   return (
-    <>
+    <List>
     {employees.map(({
       id,
       employee_age,
@@ -40,7 +41,7 @@ function App() {
         profile_image={profile_image}
       />
     })}
-    </>
+    </ List>
   );
 }
 
