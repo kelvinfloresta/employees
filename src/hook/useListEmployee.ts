@@ -8,12 +8,10 @@ export function useListEmployee() {
   const [loading, setLoading] = useState(false);
 
   const listEmployee = useCallback(() => {
-    const sub = employeeService.list();
-
     setLoading(true);
     setError(null);
 
-    sub.subscribe({
+    const sub = employeeService.list().subscribe({
       next(employees) {
         setLoading(false);
         setEmployees(employees.data.data);
@@ -23,6 +21,8 @@ export function useListEmployee() {
         setError(error);
       },
     });
+
+    return sub;
   }, []);
 
   return {

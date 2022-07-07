@@ -5,7 +5,11 @@ import { useListEmployee } from './hook/useListEmployee';
 function App() {
   const {employees, listEmployee, error, loading} = useListEmployee()
 
-  useEffect(listEmployee, [listEmployee])
+  useEffect(() => {
+    const sub = listEmployee()
+
+    return () => sub.unsubscribe()
+  }, [listEmployee])
 
   if (loading) {
     return <div>Loading employees...</div>
